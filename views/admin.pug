@@ -1,0 +1,21 @@
+extends layout
+
+block navlinks 
+  if !user.isMember
+    li
+      a(href="/member")  Become Member 
+  li 
+    a(href="/log-out") Log Out
+
+block content
+  .content-title Become Admin 
+  .more-info Admin has the authority to manage message dashboard. Inorder to become a Admin, You must know the Admin authority code.
+  .more-info If you got Admin Access, Member access will be auto granted to you.
+  .user-validation-form 
+    form(method="POST")
+      input(type="text" name="adminCode" placeholder="Admin Authority Code" value=(undefined === code ? "" : code)).inputText
+      button(type="sumbit")#submit Submit Code
+      if errors 
+        ul.error-container
+          for error in errors 
+            li!= error.msg

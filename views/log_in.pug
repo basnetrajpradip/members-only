@@ -1,0 +1,18 @@
+extends layout
+
+block navlinks 
+  li 
+    a(href="/log-in")  Log in
+  li
+    a(href="/sign-up")  Sign up 
+
+block content 
+  .content-title Log In
+  .form-container
+    form(method="POST")
+      input(type="text" name="username" placeholder="Username" value=(undefined===user ? '': user.username)).inputText
+      input(type="password" name="password" placeholder="Password" value=(undefined===password ? '': password)).inputText
+      button(type="Submit")#submit Submit
+      if errors 
+        ul.error-container
+            li!= errors

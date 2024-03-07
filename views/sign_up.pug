@@ -1,0 +1,22 @@
+extends layout
+
+block navlinks 
+  li 
+    a(href="/log-in")  Log in
+  li
+    a(href="/sign-up")  Sign up 
+
+block content
+  .content-title Sign Up 
+  .form-container 
+    form(method="POST")
+      input(type="text" name="firstname" placeholder="First Name" value=(undefined===user ? '': user.firstname)).inputText
+      input(type="text" name="lastname" placeholder="Last Name" value=(undefined===user ? '': user.lastname)).inputText
+      input(type="text" name="username" placeholder="User Name" value=(undefined===user ? '': user.username)).inputText
+      input(type="password" name="password" placeholder="Password").inputText
+      input(type="password" name="confirmPassword" placeholder="Confirm Password").inputText
+      button(type="Submit")#submit Submit
+      if errors 
+        ul.error-container
+          for error in errors 
+            li!= error.msg

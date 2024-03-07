@@ -1,0 +1,25 @@
+extends layout 
+
+block navlinks
+  if !user.isMember && !user.isAdmin 
+    li 
+      a(href="/member")  Become Member
+  if !user.isAdmin    
+    li
+      a(href="/admin")  Become Admin 
+  li 
+    a(href="/log-out") Log Out
+
+block content 
+  .content-title Delete Message
+  .more-info Are you sure you want to Delete this message?
+  .message-container 
+    .date #{message.added_formatted} 
+    .message-title #{message.title}
+    .message #{message.message}
+    .message-author "Author: "#{message.author.fullname}
+  form(method="POST")
+    input(type='hidden',name='messageid',value=message._id)
+    .delete-form
+      button(type="submit")#delete 🗑️Delete
+      a(href="/")#cancel Cancel

@@ -1,5 +1,23 @@
 extends layout
 
+mixin test(messages)
+  if messages 
+    each message in messages
+      .message-container 
+        .date (Log in to see posted date)
+        .message-title #{message.title}
+        .message #{message.message}
+        .message-author (Log in to see the author)
+
+block navlinks 
+  li 
+    a(href="/log-in")  Log in
+  li
+    a(href="/sign-up")  Sign up 
+
 block content
-  h1= title
-  p Welcome to #{title}
+  .content-title Messages
+  .more-info Log in to post your messages as well as to see who posted.
+  .messages 
+    +test(messages)
+  

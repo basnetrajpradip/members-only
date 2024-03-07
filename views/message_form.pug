@@ -1,0 +1,22 @@
+extends layout
+
+block navlinks
+  if !user.isMember && !user.isAdmin 
+    li 
+      a(href="/member")  Become Member
+  if !user.isAdmin    
+    li
+      a(href="/admin")  Become Admin 
+  li 
+    a(href="/log-out") Log Out
+
+
+block content
+  .content-title Create Message
+  .form-container 
+    form(method="POST")
+      input(type="text" name="title" placeholder="Message Title" required value=(undefined === message ? "" : message.title)).inputText 
+      textarea(name="message", cols="30", rows="10" placeholder="Type Message Here" required value=(undefined === message ? "" : message.message))#message
+      button(type="sumbit")#submit Post Message
+    .route-button
+      a(href="/") Back to Dashboard

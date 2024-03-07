@@ -1,0 +1,21 @@
+extends layout
+
+block navlinks
+  if !user.isAdmin 
+    li
+      a(href="/admin")  Become Admin 
+  li 
+    a(href="/log-out") Log Out
+
+block content
+  .content-title Become Member 
+  .more-info Inorder to become a member, You must know the membership code. Solve the Riddle and become a member.
+  .more-info Riddle: What belongs to you but other people use it more than you do? (Hint: It's a 4 letter word.)
+  .user-validation-form 
+    form(method="POST")
+      input(type="text" name="memberCode" placeholder="Membership Code" value=(undefined === code ? "" : code)).inputText
+      button(type="sumbit")#submit Submit Code
+      if errors 
+        ul.error-container
+          for error in errors 
+            li!= error.msg

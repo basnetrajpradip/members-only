@@ -1,0 +1,36 @@
+extends layout
+
+mixin test(messages)
+  if messages 
+    each message in messages
+      .message-container 
+        .date= user.isMember? message.added_formatted : "(Only members can know posted date)"
+        .message-title #{message.title}
+        .message #{message.message}
+        .message-author= user.isMember? "Author: " + message.author.fullname : "(Only members can know author)"
+        if user.isAdmin
+          a(href=`/delete-message/${message._id}`).delete-container 🗑️Delete 
+       
+block navlinks
+  if !user.isMember && !user.isAdmin 
+    li 
+      a(href="/member")  Become Member
+  if !user.isAdmin    
+    li
+      a(href="/admin")  Become Admin 
+  li 
+    a(href="/log-out") Log Out
+
+
+block content 
+  .content-title Message Dashboard
+  if user.isAdmin 
+    .more-info Welcome #{user.fullname}, You've Admin Access.
+  else if user.isMember 
+    .more-info Welcome #{user.fullname}, You've Member Access.
+  else 
+    .more-info Welcome #{user.fullname}, You've no Member/Admin Access.
+  a(href="/create-message").create-message ✍🏻Create Message
+  .messages 
+    +test(messages)
+  
