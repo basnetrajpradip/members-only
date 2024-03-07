@@ -1,8 +1,286 @@
+@font-face {
+  font-family: headerFont;
+  src: url("../fonts/headerFont.ttf");
+}
+
+:root {
+  --background: rgba(15, 15, 66, 0.904);
+  --text: wheat;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-family: headerFont;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: rgb(228, 224, 216);
 }
 
 a {
-  color: #00B7FF;
+  text-decoration: none;
+}
+
+.header a {
+  color: wheat;
+}
+
+ul {
+  margin: 0rem;
+  padding: 0rem;
+}
+
+li {
+  list-style: none;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 3rem 1rem 3rem;
+  gap: 1rem;
+  background-color: var(--background);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.icon {
+  width: 2rem;
+  fill: var(--background);
+}
+
+.logo {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  color: wheat;
+  font-weight: bold;
+  font-family: headerFont;
+  border: 2px solid wheat;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+}
+
+.nav-links > ul {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  font-size: 1.5rem;
+  font-family: headerFont;
+  padding-bottom: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+.content {
+  flex: 1;
+  color: var(--background);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 0rem;
+}
+
+.content-title {
+  font-size: 2rem;
+  font-weight: 800;
+  text-decoration: underline;
+  text-align: center;
+}
+
+.more-info {
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.create-message {
+  background-color: var(--background);
+  color: wheat;
+  padding: 0.5rem 1rem;
+  width: 13rem;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0rem 0rem 1rem;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.error-container li {
+  list-style: circle;
+}
+
+/* message form styles */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 27rem;
+}
+
+.inputText {
+  height: 2rem;
+  font-size: 1rem;
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+  letter-spacing: 1px;
+  font-weight: 600;
+  background-color: transparent;
+  border: 2px solid var(--background);
+  color: var(--background);
+  border-radius: 5px;
+}
+
+#message {
+  resize: none;
+  font-size: 1rem;
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+  background-color: transparent;
+  border: 2px solid var(--background);
+  border-radius: 6px;
+  color: var(--background);
+}
+
+.inputText::placeholder,
+#message::placeholder {
+  font-size: 1rem;
+}
+
+#submit,
+#delete {
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--background);
+  border: 2px solid var(--background);
+  color: var(--text);
+  height: 2.3rem;
+  cursor: pointer;
+}
+
+.route-button a,
+#cancel {
+  text-decoration: none;
+  color: var(--background);
+  border: 2px solid var(--background);
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+/* Message display styles */
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  color: var(--background);
+  border: 2px solid var(--background);
+  border-radius: 5px;
+  padding: 1.5rem;
+  width: 40rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.message-title {
+  font-weight: 900;
+  font-size: 1.3rem;
+  text-transform: capitalize;
+}
+
+.message {
+  font-size: 1.1rem;
+}
+
+.date {
+  font-size: 1rem;
+  align-self: flex-end;
+  font-style: italic;
+}
+
+.message-author {
+  align-self: center;
+  font-style: italic;
+  font-weight: 600;
+  padding-bottom: 0.5rem;
+}
+
+.delete-container {
+  position: absolute;
+  right: 0rem;
+  bottom: 0rem;
+  border: 1px solid var(--background);
+  border-radius: 2px;
+  color: var(--text);
+  background-color: var(--background);
+  padding: 0.2rem;
+  font-size: 0.8rem;
+}
+
+.delete-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+#delete {
+  width: 8rem;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+#cancel {
+  width: 6rem;
+  text-align: center;
+  font-weight: 800;
+}
+
+@media only screen and (max-width: 745px) {
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .logo {
+    font-size: 1.5rem;
+    padding-bottom: 0rem;
+  }
+  .nav-links > ul {
+    padding-bottom: 0;
+  }
+  .content {
+    padding: 1rem 2rem;
+  }
+  .message-container {
+    width: 80vw;
+  }
+  form {
+    width: 80vw;
+  }
 }
